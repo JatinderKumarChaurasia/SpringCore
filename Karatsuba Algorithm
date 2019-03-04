@@ -1,0 +1,41 @@
+                Karatsuba Algorithm
+----------------------------------------------------------------------
+Algorithm to multiply two integers:
+   e.g: x=5678
+        y=1234
+ we divide it into halfs and give them Names
+   a =56,b=78,c=12,d=34
+   
+   Now
+   Step 1: a.c = 56*12 = 672 -------------1
+   Step 2: b.d = 78*34 = 2652 -------------2
+   Step 3: (a+b).(c+d) = (56+78).(12+34) = 6164 ------------3
+   Step 4: 3-2-1 = 2840
+   Step 5: 6720000  (pad with 4 zeroes)
+              2652   
+            284000
+    -----------------
+            7006652 ----result of 1234*5678     
+            
+Let x = 10^(n/2)a+b
+    y = 10^(n/2)c+d
+    -------------------------------------------------------------------------------
+    x.y = 10^(n) a.c+10^(n/2)(ad+bc)+bd
+    ----------------------------------------------------------------------------
+    Now we will need only to get the result of a.d,b.c,b.d,a.c and value of n and
+    we will be able to get the result of multiplication
+    
+    
+Improvisation:
+-------------------------------------------------------------------------------------
+
+        x.y = 10^(n) a.c+10^(n/2)(ad+bc)+bd
+        Step1 : compute a.c
+        Step2 : compute b.d
+        Step3 : compute (a+b)(c+d) = ac+ad+bc+bd 
+        Step4 : compute (Step3)-(Step2)-(Step1) = ac+ad+bc+bd-bd-ac = ad+bc 
+        
+        So we need only three recursively computations and additions and we will get the results
+        
+        
+         
