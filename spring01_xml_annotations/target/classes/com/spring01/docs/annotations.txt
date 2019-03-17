@@ -1,0 +1,19 @@
+	In ApplicationContext
+	   <?xml version="1.0" encoding="UTF-8"?>
+	   <beans xmlns="http://www.springframework.org/schema/beans"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xmlns:context="http://www.springframework.org/schema/context"
+	    xsi:schemaLocation="
+	        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	        
+	        <context:annotation-config/>
+	        <context:component-scan base-package="com.spring01"></context:component-scan>
+	    </beans>  
+	  
+	  StereoType Annotations:
+	                       There are three Main Annotations for spring that helps us to find the 
+	                       components or beans in application.They are known as Stereotype Annotations.
+	       1.@Repository --> Contains Database Related -> Works on Data Layer -> those classes where interactions  is going with database
+	       2.@Service   --> USED in those classes that contains logics that were going inside application ->  Business Logic Layer  
+	       3.@Component --> FOR Regular Components or POJO
