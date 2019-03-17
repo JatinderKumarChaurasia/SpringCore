@@ -1,0 +1,34 @@
+
+@Configuartion --> at class Level
+              replaced applicationContext
+@Bean --> At method Level
+          replace spring Beans
+          
+      How to access Bean in Java
+       ApplicationContext  context = new AnnotationConfigApplicationContext(AppConfig.class)
+          
+ Injection
+ ------------------------------------------------------------------------------------
+ Setter Injection--> calling a setter method
+ 
+by creating a setter method
+then after that provide value in Appconfig
+
+Constructor Injection --> Calling a constructor
+by creating a Constructor
+then after that provide value in Appconfig
+
+--------------------------------------------------------------------------------------------------
+Autowiring
+----------------
+By Adding at the top of AppConfig class
+@ComponentScan({"com.spring01"})
+InstanceBased
+Autowire -> byName or byType
+
+-------------------------------------------------------------------------------------------------------
+Singleton Class in Spring
+  single Instance per spring container
+  use @Scope  [Requires AOP plugin]
+  
+  e.g @Scope("singleton")
