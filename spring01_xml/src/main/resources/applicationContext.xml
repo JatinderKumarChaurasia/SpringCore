@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <context:annotation-config/>  <!-- Need to Add while using @Value to access elements of app.properties -->
+    <context:property-placeholder location="app.properties"/>
+    
+    <!-- bean definitions here -->
+    <!-- Eliminate the needs of creating new Object -> Bean is basically a set of classes -->
+    <bean name="customerRepository" class="com.spring01.repository.HibernateCustomerRepositoryImpl">
+        <!--  <property name="dbUserName" value="${dbUserName}"></property> -->
+    </bean>
+    
+    <!-- __________________________________________Injection _______________________________________ -->
+    
+    <!-- Setter Injection -->
+    <!--
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl">
+         //Comment: name: will prepare the setter injection and ref: will point to the Hibernate CustomerRepositoryImpls
+          <property name="customerRepository" ref="customerRepository"></property>
+    </bean>
+    -->
+    
+    
+    <!-- Constructor Injection -->
+    <!--  
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl">
+          <constructor-arg index="0" ref="customerRepository"></constructor-arg>
+    </bean>
+    -->
+    
+    <!--   __________________________ Autowiring  _______________________________________ -->
+    
+    <!-- Autowiring Example -Constructor Autowiring -->
+    <!--
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="constructor">
+    </bean>
+    -->
+    
+    <!-- byType Autowiring - Look for the argumentsType of the setter in CustomerServiceImpl  -->
+    <!--  
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="byType">
+    </bean>
+    --> 
+    
+    <!-- byName Autowiring - Looks for the name  of the setter in CustomerServiceImpl  
+      if the name ="customerRepository" then byName looks for setCustomerRepository()
+      if the name ="foo" then byName looks for setter setFoo()
+    -->
+    <!-- To Add Singleton(Only one Instance per class) Property we used scope = "singleton"
+         To Add Prototype(Opposite of Singleton) Property we used scope ="prototype"
+     -->
+     <!-- Singleton as a scope -->
+     <!--  
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="byName" scope="singleton">
+    </bean>
+    -->
+    <!-- Prototype as a scope -->
+    <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="byName" scope="prototype">
+    </bean>
+    
+</beans>
+
+
+<!--
+Setter Injection
+food is set as a reference to customer service as a way to eliminate new HiberateCustomerServiceImpl
+ <bean name="food" class="com.spring01.repository.HibernateCustomerRepositoryImpl"/>
+<bean name="customerService" class="com.spring01.service.CustomerServiceImpl">
+          <property name="customerRepository" ref="food"></property>
+    </bean>
+    -->

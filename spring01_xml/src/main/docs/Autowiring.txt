@@ -1,0 +1,26 @@
+  
+  Autowiring: When there are multiple beans of same class and we need to autowire them manually
+    But Spring does the autowiring of beans automatically
+    
+  There are four types of autowiring in Spring:
+ <!------------------------------------------------------------------------------------------------->
+   1.byType --> when ther are two bean belonging to same class but of different names than byType acts.
+                 It allows to creates only one instance of class in container of application context.
+                 
+                 <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="byType"> </bean>
+                 
+                 -------------------------------------------------------------------
+   
+   2.byName --> allows to have multiples instances and choose that specific object by name.
+   
+                <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="byName"></bean>
+                
+                --------------------------------------------------------------------
+   3.constructor --> behaves similarly to setter injection by type .It looks for an object
+                      of that type to inject into argument of the constructor.
+                      
+                       <bean name="customerService" class="com.spring01.service.CustomerServiceImpl" autowire="constructor"></bean>
+                       
+                --------------------------------------------------------------------
+                       
+   4.no --> Means those beans not to be autowired

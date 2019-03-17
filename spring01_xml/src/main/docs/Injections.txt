@@ -1,0 +1,41 @@
+
+To used Bean we used Injectors
+   Two types of Injection:
+   1.Setter Injection
+   2.Constructor Injection
+   -----------------------------------------------------------------------------------------
+ 1. Setter Injection 
+     -Name based
+     - Getter and Setter defined
+   we used <property name="" ref=""></property>
+   -------------------------------------------------------------------------------
+ 2. Constructor Injection
+    -Index Based
+    -Constructor need to be Defined
+    -used Together with Setter Injection
+    
+   How to use it ---->
+     In applicationContext.xml
+       in Bean of class for which we want to write ref
+         inside the bean 
+        -->Point to be noted that index depend on the no of argument which we defined in the constructor of class and ref-name will be same 
+        as the constructor of that class
+         <bean name="" class="location of that class">
+            <constructor-arg index="0" ref="arg1"/>
+            <constructor-arg index="1" ref="arg2"/>
+            <constructor-arg index="2" ref="arg3"/>
+         </bean>
+         
+      In class
+      Constructor
+          public ClassName(arg1,arg2,arg3){
+          }
+          
+          
+  --------------------------------------------------------------------------------------------------------------------------------
+  How to utilize bean in Main class
+    ApplicationContext ppcontecxt = new ClassPathXmlApplicationContext("name of bean defined xml file")
+    ClassName abc = ppcontecxt.getBean("name of that classname you used in the bean xml file",ClassName.class)
+    
+    
+   
