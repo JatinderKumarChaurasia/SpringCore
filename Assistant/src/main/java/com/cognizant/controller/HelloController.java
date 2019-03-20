@@ -9,8 +9,8 @@ public class HelloController {
 
 	@RequestMapping(value = "/greeting")
 	public String sayHello(Model model) {
-		//addAttribute(key,value)
-		model.addAttribute("greeting", "Hello World");
+		// addAttribute(key,value)
+		model.addAttribute("greeting", "Shivani Sharma");
 		return "hello";
 	}
 
